@@ -75,7 +75,8 @@ source ~/cl/bin/git-completion.bash
 
 prompt_func() {
     previous_return_value=$?;
-    prompt="${COLOR_GREEN}\w${COLOR_GRAY}$(__git_ps1)${COLOR_NC} "
+    prompt="${COLOR_GRAY}\t \u@\h ${COLOR_GREEN}\w${COLOR_GRAY}$(__git_ps1)${COLOR_NC} "
+    #prompt="${COLOR_GREEN}\w${COLOR_GRAY}$(__git_ps1)${COLOR_NC} "
     #prompt="${COLOR_GREEN}\w${COLOR_GRAY}$(__git_ps1)${COLOR_NC}\[\033]0;\u@\h: \w\007\] "
     #prompt="${COLOR_GREEN}\w${COLOR_NC}$(__git_ps1)${COLOR_YELLOW}$(git_dirty_flag)${COLOR_NC} "
 
@@ -151,28 +152,65 @@ alias v=vim
 # chmod -R g+rwXs,o-rwx,u+rwX /foo
 
 
-
-# Sluething----------------------------------------------------
+# Sluething---------------------------------------------------------
 findportuser() {
     lsof -i :"$1"
 }
 
 
 
-# Other aliases ----------------------------------------------------
+# Directory listings -----------------------------------------------
+alias ls='ls -Fh'
 alias ll='ls -hl'
-alias la='ls -a'
+alias la='ls -A'
 alias lla='ls -lah'
+alias l='ls -CF'
+
+
+# Color support ----------------------------------------------------
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    eval "`dircolors -b`"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+
+
+# Other aliases ----------------------------------------------------
+
+# c = clear
+alias c='clear'
+
+# Avoid making mistakes
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+
 
 # Search
 alias g='grep -i'  # Case insensitive grep
+alias f='find . -iname'	# Case insensitive find
+
+# Search from contents all files in the current directory
+# Usage:
+#   gns <pattern>
 gns(){ # Case insensitive, excluding svn folders
   find . -path '*/.svn' -prune -o -type f -print0 | xargs -0 grep -I -n -e "$1"
 }
-alias f='find . -iname'
+
+
 
 # Misc
-alias ducks='du -cksh * | sort -rn|head -11' # Lists folders and files sizes in the current folder
+#alias ducks='du -cksh * | sort -rn|head -11' # Lists folders and files sizes in the current folder
+alias ducks='du -cksh *' # Lists folders and files sizes in the current folder
+
 
 if [ "$OS" = "linux" ] ; then
 	alias processes_all='ps -aulx'
@@ -180,18 +218,24 @@ else
 	alias top='top -o cpu' # os x
 fi
 
-alias systail='tail -f /var/log/system.log'
+
+#alias systail='tail -f /var/log/system.log' # Debian?
+alias systail='tail -f /var/log/syslog' # Ubuntu
+
 alias m='more'
+
+# rak - grep replacement in pure Ruby: http://rak.rubyforge.org
 alias rak='rak -a'
 
 alias df='df -h' # Show disk usage
+
 
 # Shows most used commands, cool script I got this from: http://lifehacker.com/software/how-to/turbocharge-your-terminal-274317.php
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 
 alias untar="tar xvzf"
 
-alias cp_folder="cp -Rpv" #copies folder and all sub files and folders, preserving security and dates
+alias cp_folder="cp -Rpv"	#Copies folder and all sub files and folders, preserving security and dates
 
 killhard() {
     kill -9 "$1"

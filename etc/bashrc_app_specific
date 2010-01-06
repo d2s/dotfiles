@@ -153,6 +153,17 @@ gtgrep(){
 }
 
 
+# Git: Additional aliases ------------------------------------------
+# Removed files that are already deleted from disk from git's repository too
+alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+
+# Shows history of changes (changelog) in less
+alias gl="git log | less" 
+
+# Shows changes to tracked files in less
+alias gd="git diff | less"
+
+
 
 # Rails and Rake -------------------------------------------------
 alias rrshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands: 
