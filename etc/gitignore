@@ -1,4 +1,11 @@
-.DS_Store
+*.pyc
+*.rbc
 .svn
 *.sw?
+*~
+.#*
+.DS_Store
+._*
+TAGS
+tags
 .netrwhist
