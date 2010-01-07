@@ -35,3 +35,4 @@ set gtl=%t gtt=%F
 
 " Do not blink
 set gcr=a:blinkon0
+set vb t_vb=

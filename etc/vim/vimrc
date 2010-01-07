@@ -115,11 +115,11 @@ imap aa @
 
 " Directories *****************************************************************
 " Setup backup location and enable
-"set backupdir=~/backup/vim
-"set backup
+set backupdir=~/backup/vim
+set backup
 
 " Set Swap directory
-"set directory=~/backup/vim/swap
+set directory=~/backup/vim/swap
 
 " Sets path to directory buffer was loaded from
 "autocmd BufEnter * lcd %:p:h
@@ -129,7 +129,7 @@ imap aa @
 filetype plugin indent on
 " To show current filetype use: set filetype
 
-"autocmd FileType html :set filetype=xhtml 
+autocmd FileType html :set filetype=xhtml 
 
 
 " Inser New Line **************************************************************
