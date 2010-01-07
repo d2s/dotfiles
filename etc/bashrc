@@ -212,11 +212,12 @@ gns(){ # Case insensitive, excluding svn folders
 alias ducks='du -cksh *' # Lists folders and files sizes in the current folder
 
 
-if [ "$OS" = "linux" ] ; then
-	alias processes_all='ps -aulx'
-else
-	alias top='top -o cpu' # os x
-fi
+### Does not work at Ubuntu!
+#if [ "$OS" = "linux" ] ; then
+#	alias processes_all='ps -aulx'
+#else
+#	alias top='top -o cpu' # os x
+#fi
 
 
 #alias systail='tail -f /var/log/system.log' # Debian?
