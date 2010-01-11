@@ -188,7 +188,8 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 " May require ruby compiled in
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
-
+" Syntax Highlight to Less files - http://lesscss.org
+au BufRead,BufNewFile *.less setfiletype css
 
 
 " -----------------------------------------------------------------------------  
