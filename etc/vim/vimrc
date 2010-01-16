@@ -122,7 +122,7 @@ set backup
 set directory=~/backup/vim/swap
 
 " Sets path to directory buffer was loaded from
-"autocmd BufEnter * lcd %:p:h
+autocmd BufEnter * lcd %:p:h
 
 
 " File Stuff ******************************************************************
@@ -157,9 +157,9 @@ set nolist
 
 
 " Mouse ***********************************************************************
-"set mouse=a " Enable the mouse
-"behave xterm
-"set selectmode=mouse
+set mouse=a " Enable the mouse
+behave xterm
+set selectmode=mouse
 
 
 " Cursor Movement *************************************************************
