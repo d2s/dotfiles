@@ -1,4 +1,4 @@
-alias reloadbash='source ~/cl/etc/bash_profile'
+alias reloadbash='source ~/projects/dotfiles/etc/bash_profile'
 
 # Colors ----------------------------------------------------------
 export TERM=xterm-color
@@ -66,7 +66,7 @@ set -o vi
 #bind -m vi-command -r 'v'
 
 # git completion
-source ~/cl/bin/git-completion.bash
+source ~/projects/dotfiles/bin/git-completion.bash
 
 # Prompts ----------------------------------------------------------
 #git_dirty_flag() {
@@ -213,22 +213,31 @@ alias ducks='du -cksh *' # Lists folders and files sizes in the current folder
 
 
 ### Does not work at Ubuntu!
-#if [ "$OS" = "linux" ] ; then
-#	alias processes_all='ps -aulx'
-#else
-#	alias top='top -o cpu' # os x
-#fi
+if [ "$OS" = "linux" ] ; then
+	alias processes_all='ps -aulx'
+else
+	alias top='top -o cpu' # os x
+fi
 
 
-#alias systail='tail -f /var/log/system.log' # Debian?
-alias systail='tail -f /var/log/syslog' # Ubuntu
+if [ -f /var/log/system.log ]; then
+  alias systail='tail -f /var/log/system.log' # OX X
+fi 
+
+if [ -f /var/log/syslog ]; then
+  alias systail='tail -f /var/log/syslog' # Ubuntu
+fi 
+
+
+
 
 alias m='more'
 
 # rak - grep replacement in pure Ruby: http://rak.rubyforge.org
 alias rak='rak -a'
 
-alias df='df -h' # Show disk usage
+# Show disk usage
+alias df='df -h'
 
 
 # Shows most used commands, cool script I got this from: http://lifehacker.com/software/how-to/turbocharge-your-terminal-274317.php
@@ -236,7 +245,7 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' 
 
 alias untar="tar xvzf"
 
-alias cp_folder="cp -Rpv"	#Copies folder and all sub files and folders, preserving security and dates
+alias cp_folder="cp -Rpv"	# Copies folder and all sub files and folders, preserving security and dates
 
 killhard() {
     kill -9 "$1"
