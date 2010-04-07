@@ -163,6 +163,8 @@ alias gl="git log | less"
 # Shows changes to tracked files in less
 alias gd="git diff | less"
 
+# Show log together with summary and visual statistics of changes
+alias gtlogstat="git log --stat --summary"
 
 
 # Rails and Rake -------------------------------------------------
