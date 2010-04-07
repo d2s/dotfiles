@@ -1,8 +1,7 @@
 h1. dotfiles
 
-!http://www.infinitered.com/blog_extras/command_line_fx/kb_control_wide_short_bw2.jpg!
+Originally based of InfiniteRed's dotfiles but things has been adjusted since then.
 
-This repo started out with just my . files (mainly vim files), but over time I've added to it, and now it represents a subset of all my command-line folders.
 
 h2. File and directory structure
 
