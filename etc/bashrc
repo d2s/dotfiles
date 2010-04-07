@@ -192,8 +192,6 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-
-
 # Search
 alias g='grep -i'  # Case insensitive grep
 alias f='find . -iname'	# Case insensitive find
@@ -228,7 +226,10 @@ if [ -f /var/log/syslog ]; then
   alias systail='tail -f /var/log/syslog' # Ubuntu
 fi 
 
-
+# alias to Crash logs / Diagnostic Reports of OS X
+if [ -d ~/Library/Logs/DiagnosticReports ]; then
+  alias crashlogs='cd ~/Library/Logs/DiagnosticReports'
+fi
 
 
 alias m='more'
