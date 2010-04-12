@@ -5,14 +5,15 @@ Originally based of InfiniteRed's dotfiles but things has been adjusted since th
 
 h2. File and directory structure
 
-I store all my command-line files in a folder (cl), then under that folder there are 3 sub-folders (cl/bin cl/etc cl/doc), to keep them organized away from all my other files.  I link (etc/link) the dot files to the root of my home folder, so I prefer to store them without the . (gitignore rather than .gitignore), then I add the dot in the link.  So if you use one, make sure you put the dot back.
+I store all my command-line files in a folder (projects/dotfiles), then under that folder there are 3 sub-folders (projects/dotfiles/bin projects/dotfiles/etc projects/dotfiles/doc), to keep them organized away from all my other files.  I link (etc/link) the dot files to the root of my home folder, so I prefer to store them without the . (for example, gitignore instead of .gitignore), then I add the dot in the link.  So if you use one, make sure you put the dot back.
 
   * ~
-  ** cl
-  *** bin
-  *** docs
-  *** etc
-  **** vim
+  ** projects
+  *** dotfiles
+  **** bin
+  **** docs
+  **** etc
+  ***** vim
           
 h2. Warning
 
