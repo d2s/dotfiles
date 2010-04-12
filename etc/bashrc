@@ -137,7 +137,7 @@ export EDITOR='vim'  #Command line
 export GIT_EDITOR='vim'
 #alias gvim='/Applications/MacVim.app/Contents/MacOS/vim -g'
 alias v=vim
-# Use mvim in cl/bin to open MacVim
+# Use mvim in projects/dotfiles/bin to open MacVim
 
 
 
