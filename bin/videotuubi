@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "Tuubi Streamer v.0.1"
+echo "--------------------"
+echo "enter YouTube link address"
+read tuubi
+echo "enter output file"
+read output
+youtube -b $tuubi -o $output &
+sleep 6
+mplayer -aspect 16:9 $output
+rm $output
+killall python
