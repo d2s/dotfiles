@@ -1,10 +1,22 @@
 #!/bin/bash
+# Script to load & play YouTube videos with MPlayer
+#
+# Warning: will cause problems if you are running
+# other Python scripts/processes in the same time.
+# Improvement suggestions to the script are welcome.
+#
 echo "Tuubi Streamer v.0.2"
 echo "--------------------"
 echo "enter YouTube link address"
 read tuubi
+# Start the actual downloader script
 youtube -b $tuubi -o outputvideo &
+# Delay of 6 seconds so that youtube script
+# would have enough time to download content
 sleep 6
+# Start mplayer with 16:9 aspect ratio
 mplayer -aspect 16:9 outputvideo
+# Removes file: outputvideo
 rm outputvideo
+# Kills any running python processes
 killall python
