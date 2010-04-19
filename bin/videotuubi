@@ -13,7 +13,7 @@ read tuubi
 youtube -b $tuubi -o outputvideo &
 # Delay of 6 seconds so that youtube script
 # would have enough time to download content
-sleep 6
+sleep 15
 # Start mplayer with 16:9 aspect ratio
 mplayer -aspect 16:9 outputvideo
 # Removes file: outputvideo
