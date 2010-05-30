@@ -238,6 +238,12 @@ if [ -d ~/Library/Logs/DiagnosticReports ]; then
   alias crashlogs='cd ~/Library/Logs/DiagnosticReports'
 fi
 
+# alias to make backup of Crash logs to ~/backups/crashlogs_backup directory
+# Checks first if there are both original source and end location for files.
+if [ -d ~/Library/Logs/DiagnosticReports -a -d ~/backup/crashlogs_backup ]; then
+  alias crashlogs-backup='cp -a ~/Library/Logs/DiagnosticReports/* ~/backup/crashlogs_backup/'
+fi
+
 
 alias m='more'
 
