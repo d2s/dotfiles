@@ -8,6 +8,7 @@
 " |                                                                           |
 " |   ,f = fuzzy find all files                                               |
 " |   ,b = fuzzy find in all buffers                                          |
+" |   ,p = go to previous file                                                |
 " |                                                                           |
 " |   hh = inserts '=>'                                                       |
 " |   aa = inserts '@'                                                        |
@@ -27,6 +28,8 @@
 
 
 set nocompatible
+let mapleader = ","
+imap jj <Esc> " Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
 
 
 " Tabs ************************************************************************
@@ -57,7 +60,7 @@ call Tabstyle_spaces()
 
 " Indenting *******************************************************************
 set ai " Automatically set the indent of a new line (local to buffer)
-set si " smartindent	(local to buffer)
+set si " smartindent (local to buffer)
 
 
 " Scrollbars ******************************************************************
@@ -69,9 +72,9 @@ set numberwidth=4
 set equalalways " Multiple windows, when created, are equal in size
 set splitbelow splitright
 
-"Vertical split then hop to new buffer
-:noremap ,v :vsp^M^W^W<cr>
-:noremap ,h :split^M^W^W<cr>
+" Vertical and horizontal split then hop to a new buffer
+:noremap <Leader>v :vsp^M^W^W<cr>
+:noremap <Leader>h :split^M^W^W<cr>
 
 
 " Cursor highlights ***********************************************************
@@ -81,7 +84,7 @@ set cursorline
 
 " Searching *******************************************************************
 set hlsearch  " highlight search
-set incsearch  " incremental search, search as you type
+set incsearch  " Incremental search, search as you type
 set ignorecase " Ignore case when searching 
 set smartcase " Ignore case when searching lowercase
 
@@ -105,14 +108,6 @@ set nowrap
 set linebreak  " Wrap at word
 
 
-" Mappings ********************************************************************
-" Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
-imap jj <Esc>
-imap uu _
-imap hh =>
-imap aa @
-
-
 " Directories *****************************************************************
 " Setup backup location and enable
 set backupdir=~/backup/vim
@@ -132,10 +127,10 @@ filetype plugin indent on
 autocmd FileType html :set filetype=xhtml 
 
 
-" Inser New Line **************************************************************
+" Insert New Line *************************************************************
 map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
 map <Enter> o<ESC>
-set fo-=r " do not insert a comment leader after an enter, (no work, fix!!)
+"set fo-=r " do not insert a comment leader after an enter, (no work, fix!!)
 
 
 " Sessions ********************************************************************
@@ -143,17 +138,10 @@ set fo-=r " do not insert a comment leader after an enter, (no work, fix!!)
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 
 
-" Misc ************************************************************************
-set backspace=indent,eol,start
-set number " Show line numbers
-set matchpairs+=<:>
-set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
-
-
 " Invisible characters *********************************************************
 set listchars=trail:.,tab:>-,eol:$
 set nolist
-:noremap ,i :set list!<CR> " Toggle invisible chars
+:noremap <Leader>i :set list!<CR> " Toggle invisible chars
 
 
 " Mouse ***********************************************************************
@@ -162,7 +150,16 @@ behave xterm
 set selectmode=mouse
 
 
-" Cursor Movement *************************************************************
+" Misc settings ***************************************************************
+set backspace=indent,eol,start
+set number " Show line numbers
+set matchpairs+=<:>
+set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
+set nofoldenable " Turn off folding 
+
+
+" Navigation ******************************************************************
+
 " Make cursor move by visual lines instead of file lines (when wrapping)
 map <up> gk
 map k gk
@@ -171,6 +168,8 @@ map <down> gj
 map j gj
 imap <down> <C-o>gj
 map E ge
+
+map <Leader>p <C-^> " Go to previous file
 
 
 " Ruby stuff ******************************************************************
@@ -191,19 +190,29 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 " Syntax Highlight to Less files - http://lesscss.org
 au BufRead,BufNewFile *.less setfiletype css
 
+" Hard to type *****************************************************************
+imap uu _
+imap hh =>
+imap aa @
+
 
 " -----------------------------------------------------------------------------  
 " |                              Plug-ins                                     |
 " -----------------------------------------------------------------------------  
 
 " NERDTree ********************************************************************
-:noremap ,n :NERDTreeToggle<CR>
+:noremap <Leader>n :NERDTreeToggle<CR>
+let NERDTreeHijackNetrw=1 " User instead of Netrw when doing an edit /foobar
+let NERDTreeMouseMode=1 " Single click for everything
 
-" User instead of Netrw when doing an edit /foobar
-let NERDTreeHijackNetrw=1
 
-" Single click for everything
-let NERDTreeMouseMode=1
+" NERD Commenter **************************************************************
+let NERDCreateDefaultMappings=0 " I turn this off to make it simple
+
+" Toggle commenting on 1 line or all selected lines. Wether to comment or not
+" is decided based on the first line; if it's not commented then all lines
+" will be commented
+:map <Leader>c :call NERDComment(0, "toggle")<CR> 
 
 
 " SnippetsEmu *****************************************************************
@@ -220,13 +229,13 @@ let NERDTreeMouseMode=1
   " ruby extconf.rb
   " make
 let g:CommandTMatchWindowAtTop = 1
-map ,f :CommandT<CR>
+map <Leader>f :CommandT<CR>
 
 
 " fuzzyfinder ********************************************************
 " I'm using CommandT for main searching, but it doesn't do buffers, so I'm
 " using FuzzyFinder for that
-map ,b :FufBuffer<CR>
+map <Leader>b :FufBuffer<CR>
 "let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 
 
@@ -238,6 +247,10 @@ map ,b :FufBuffer<CR>
 let g:AutoComplPop_IgnoreCaseOption = 0
 let g:AutoComplPop_BehaviorKeywordLength = 2
 
+
+" railsvim ***************************************************************
+map <Leader>ra :AS<CR>
+map <Leader>rs :RS<CR>
 
 
 " -----------------------------------------------------------------------------  
