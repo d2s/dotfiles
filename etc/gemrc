@@ -1,0 +1,4 @@
+ruby -C$HOME -ryaml -e "
+gemrc = YAML::load_file('.gemrc') rescue {}
+gemrc['gem'] = '-n/usr/local/bin'
+YAML::dump(gemrc, File.new('.gemrc', 'w'))"

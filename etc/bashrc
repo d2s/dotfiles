@@ -241,9 +241,10 @@ fi
 # alias to make backup of Crash logs to ~/backups/crashlogs_backup directory
 # Checks first if there are both original source and end location for files.
 if [ -d ~/Library/Logs/DiagnosticReports -a -d ~/backup/crashlogs_backup ]; then
-  alias crashlogs-backup='cp -anv ~/Library/Logs/DiagnosticReports/* ~/backup/crashlogs_backup/'
-fi
-
+  crashlogs-backup() { cp -anv ~/Library/Logs/DiagnosticReports/* ~/backup/crashlogs_backup/;
+                       cp -anv /Library/Logs/DiagnosticReports/* ~/backup/crashlogs_backup/;
+                     }
+                   fi
 
 alias m='more'
 
