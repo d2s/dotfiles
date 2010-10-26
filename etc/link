@@ -50,7 +50,7 @@ ln -s ~/projects/dotfiles/etc/gitignore ~/.gitignore
 ln -s ~/projects/dotfiles/etc/gitattributes ~/.gitattributes
 
 # add symbolic link just in case some configs assume that things are under ~/cl
-ln -s ~/projects/dotfiles cl
+ln -s ~/projects/dotfiles ~/cl
 
 # make backup directory so that vim will work as set in vimrc
 mkdir ~/backup
