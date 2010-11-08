@@ -3,6 +3,9 @@
 profile
 *.moved-aside
 
+# Espresso editor project files
+*.esproj/
+
 
 # Python related
 *.py[co]
