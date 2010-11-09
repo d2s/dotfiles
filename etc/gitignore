@@ -107,6 +107,11 @@ build/*
 xcuserdata
 
 
+# FlexBuilder
+bin/
+bin-debug/
+
+
 # Symfony
 cache/*
 web/uploads/*
