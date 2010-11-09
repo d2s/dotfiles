@@ -7,7 +7,10 @@ profile
 .ackrc
 
 # Espresso editor project files
-*.esproj/
+*.esproj/*
+
+# vim
+.netrwhist
 
 
 # Python related
@@ -133,4 +136,3 @@ thumbs.db
 ._*
 TAGS
 tags
-.netrwhist
