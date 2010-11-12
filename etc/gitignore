@@ -7,7 +7,7 @@ profile
 .ackrc
 
 # Espresso editor project files
-*.esproj/*
+*.esproj/
 
 # vim
 .netrwhist
@@ -127,8 +127,11 @@ application/cache/*
 application/logs/*
 
 
-# Windows related files
-thumbs.db
+# Windows
+# Windows images caches
+Thumbs.db
+# Folder config file
+Desktop.ini
 
 
 # Others...
