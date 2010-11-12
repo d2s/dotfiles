@@ -3,6 +3,14 @@
 profile
 *.moved-aside
 
+# Thumbnails and Resource Forks
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+
 # ack swap files
 .ackrc
 
@@ -136,6 +144,5 @@ Desktop.ini
 
 # Others...
 .#*
-._*
 TAGS
 tags
