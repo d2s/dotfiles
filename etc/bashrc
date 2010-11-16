@@ -195,6 +195,9 @@ fi
 
 # Other aliases ----------------------------------------------------
 
+# Jump to ~/projects/dotfiles/etc/ -directory
+alias dotfiles='cd ~/projects/dotfiles/etc'
+
 # c = clear
 alias c='clear'
 
