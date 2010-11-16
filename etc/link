@@ -30,12 +30,12 @@ ln -s ~/projects/dotfiles/etc/vim ~/.vim
 #ln -s ~/projects/dotfiles/etc/netbeans/6.0/config ~/.netbeans/6.0/config
 
 # subversion
-rm ~/.subversion
-ln -s ~/projects/dotfiles/etc/subversion ~/.subversion
+#rm ~/.subversion
+#ln -s ~/projects/dotfiles/etc/subversion ~/.subversion
 
 # autotest
-rm ~/.autotest
-ln -s ~/projects/dotfiles/etc/autotest ~/.autotest
+#rm ~/.autotest
+#ln -s ~/projects/dotfiles/etc/autotest ~/.autotest
 
 # irb
 rm ~/.irbrc
