@@ -249,6 +249,7 @@ fi
 if [ -d ~/Library/Logs/DiagnosticReports -a -d ~/backup/crashlogs_backup ]; then
   crashlogs-backup() { cp -anv ~/Library/Logs/DiagnosticReports/* ~/backup/crashlogs_backup/;
                        cp -anv /Library/Logs/DiagnosticReports/* ~/backup/crashlogs_backup/;
+                       cp -anv ~/Library/Logs/CrashReporter/MobileDevice/* ~/backup/crashlogs_backup/;
                      }
                    fi
 
