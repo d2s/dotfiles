@@ -42,6 +42,11 @@ if [ -d /usr/local/lib/node ]; then
   export NODE_PATH="/usr/local/lib/node" # add node files to the path so that it can find them
 fi
 
+# Haskell package management
+if [ -d ~/.cabal/bin ]; then
+  export PATH=~/.cabal/bin:$PATH # add user's personal Haskell binaries to path
+fi
+
 
 # Load in .bashrc -------------------------------------------------
 source ~/.bashrc
