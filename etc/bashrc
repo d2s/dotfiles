@@ -103,7 +103,7 @@ if [ $IS_INTERACTIVE = 'true' ] ; then # Interactive shell only
   prompt_func() {
       previous_return_value=$?;
       if [ $IS_REMOTE = 'true' ] ; then
-        prompt="\[\033]0;${USER} ${PWD}\007\]\[${COLOR_PURPLE}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_NC}\] "
+        prompt="\[${COLOR_PURPLE}\]\u@\h \[\033]0;${USER} ${PWD}\007\]\[${COLOR_PURPLE}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_NC}\] "
       else
         prompt="\[\033]0;${USER} ${PWD}\007\]\[${COLOR_GREEN}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_NC}\] "
       fi
