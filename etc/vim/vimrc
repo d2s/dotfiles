@@ -121,6 +121,7 @@ autocmd BufEnter * lcd %:p:h
 
 
 " File Stuff ******************************************************************
+filetype off
 filetype plugin indent on
 " To show current filetype use: set filetype
 
