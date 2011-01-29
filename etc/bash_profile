@@ -48,6 +48,13 @@ if [ -d ~/.cabal/bin ]; then
 fi
 
 
+# Python installed via homebrew
+if [ -d /usr/local/Cellar/python/2.7.1/bin ]; then
+  export PATH=/usr/local/Cellar/python/2.7.1/bin:$PATH # add things to path so that packages installed with pip work
+fi
+
+
+
 # Load in .bashrc -------------------------------------------------
 source ~/.bashrc
 
