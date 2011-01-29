@@ -36,7 +36,7 @@ fi
 
 # node.js
 if [ -d /usr/local/share/npm/bin ]; then
-  export PATH=/usr/local/npm/bin:$PATH # add user's personal npm (node.js) module files to the path
+  export PATH=/usr/local/share/npm/bin:$PATH # add user's personal npm (node.js) module files to the path
 fi
 if [ -d /usr/local/lib/node ]; then
   export NODE_PATH="/usr/local/lib/node" # add node files to the path so that it can find them
