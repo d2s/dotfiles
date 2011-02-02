@@ -40,3 +40,6 @@
 [submodule "etc/vim/bundle/supertab"]
 	path = etc/vim/bundle/supertab
 	url = git://github.com/ervandew/supertab.git
+[submodule "etc/vim/bundle/shell"]
+	path = etc/vim/bundle/shell
+	url = git://github.com/vim-scripts/shell.vim--Odding.git
