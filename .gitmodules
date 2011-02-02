@@ -52,3 +52,9 @@
 [submodule "etc/vim/bundle/syntastic"]
 	path = etc/vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
+[submodule "etc/vim/bundle/rails"]
+	path = etc/vim/bundle/rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "etc/vim/bundle/haml"]
+	path = etc/vim/bundle/haml
+	url = git://github.com/tpope/vim-haml.git
