@@ -28,9 +28,6 @@
 [submodule "etc/vim/bundle/autocomplpop"]
 	path = etc/vim/bundle/autocomplpop
 	url = git://github.com/vim-scripts/AutoComplPop.git
-[submodule "etc/vim/bundle/shell"]
-	path = etc/vim/bundle/shell
-	url = git://github.com/xolox/vim-shell.git
 [submodule "etc/vim/bundle/conque"]
 	path = etc/vim/bundle/conque
 	url = git://github.com/rson/vim-conque.git
