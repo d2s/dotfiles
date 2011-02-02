@@ -43,3 +43,9 @@
 [submodule "etc/vim/bundle/shell"]
 	path = etc/vim/bundle/shell
 	url = git://github.com/vim-scripts/shell.vim--Odding.git
+[submodule "etc/vim/bundle/nerdcommenter"]
+	path = etc/vim/bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "etc/vim/bundle/nerdtree"]
+	path = etc/vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
