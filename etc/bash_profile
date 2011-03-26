@@ -16,18 +16,25 @@ if [ "$OS" = "darwin" ] ; then
 fi
 
 if [ -d /usr/local/bin ]; then
-	export PATH=/usr/local/bin:$PATH  # add your system bin folder to the path, if you have it
+  export PATH=/usr/local/bin:$PATH  # add your system bin folder to the path, if you have it
 fi
 if [ -d /usr/local/sbin ]; then
-	export PATH=/usr/local/sbin:$PATH  # add your system sbin folder to the path, if you have it
+  export PATH=/usr/local/sbin:$PATH  # add your system sbin folder to the path, if you have it
 fi
 
+# Local binaries under personal account
+# Add your bin folder to the path, if you have it. It's a good place to add all your scripts
 if [ -d ~/bin ]; then
-	export PATH=~/bin:$PATH  # add your bin folder to the path, if you have it.  It's a good place to add all your scripts
+  export PATH=~/bin:$PATH  
 fi
+if [ -d ~/local/bin ]; then
+  export PATH=$HOME/local/bin:$PATH
+fi
+
+
 
 if [ -d ~/projects/dotfiles/bin ]; then
-	export PATH=~/projects/dotfiles/bin:$PATH  # add your bin folder to the path, if you have it
+  export PATH=~/projects/dotfiles/bin:$PATH  # add your bin folder to the path, if you have it
 fi
 
 if [ -d ~/.gem/ruby/1.8/bin ]; then
@@ -35,12 +42,19 @@ if [ -d ~/.gem/ruby/1.8/bin ]; then
 fi
 
 # node.js
+## Installed via homebrew to OS X
 if [ -d /usr/local/share/npm/bin ]; then
   export PATH=/usr/local/share/npm/bin:$PATH # add user's personal npm (node.js) module files to the path
 fi
 if [ -d /usr/local/lib/node ]; then
   export NODE_PATH="/usr/local/lib/node" # add node files to the path so that it can find them
 fi
+## Installed to under user directory in Linux
+if [ -d ~/local/lib/node ]; then
+  export NODE_PATH="~/local/lib/node" # add node files to the path so that it can find them
+fi
+
+
 
 # Haskell package management
 if [ -d ~/.cabal/bin ]; then

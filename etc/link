@@ -39,8 +39,7 @@ else
   # irb
   #link ~/projects/dotfiles/etc/irbrc ~/.irbrc
   
-  
-  
+
   # make backup directory so that vim will work as set in vimrc
   mkdir ~/backup
   mkdir ~/backup/vim
@@ -49,8 +48,6 @@ else
   # add symbolic link just in case some configs assume that things are under ~/cl
   ln -s ~/projects/dotfiles ~/cl
   
-  
   source ~/.bash_profile
-
 
 fi

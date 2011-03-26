@@ -311,7 +311,10 @@ if [ -d ~/Library/Logs/DiagnosticReports -a -d ~/backup/crashlogs_backup ]; then
                    fi
 
 # Go to Espresso Sugars directory
-alias sugars="cd ~/Library/Application\ Support/Espresso/Sugars"
+if [ -d ~/Library/Application\ Support/Espresso/Sugars ]; then
+  alias sugars="cd ~/Library/Application\ Support/Espresso/Sugars"
+fi
+
 
 
 # rak - grep replacement in pure Ruby: http://rak.rubyforge.org
