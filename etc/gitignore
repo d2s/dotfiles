@@ -83,7 +83,7 @@ db/*.sqlite3
 # Subversion
 .svn
 
-*.sw?
+#*.sw?
 
 # Any files with ~ character in the end
 # (normally autosaved items etc.)
