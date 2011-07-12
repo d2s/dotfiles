@@ -315,6 +315,10 @@ if [ -d ~/Library/Application\ Support/Espresso/Sugars ]; then
   alias sugars="cd ~/Library/Application\ Support/Espresso/Sugars"
 fi
 
+# Check for XML syntax errors and grep them from the output
+alias virhetesti="xmllint --debug *.xml | grep error"
+
+
 
 
 # rak - grep replacement in pure Ruby: http://rak.rubyforge.org
