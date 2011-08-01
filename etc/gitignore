@@ -20,6 +20,9 @@ nbproject/
 # Espresso editor project files
 *.esproj/
 
+# Sublime Text 2 project file
+*.sublime-project
+
 # vim
 .netrwhist
 
