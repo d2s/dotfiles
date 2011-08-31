@@ -22,6 +22,7 @@ nbproject/
 
 # Sublime Text 2 project file
 *.sublime-project
+*.sublime-workspace
 
 # vim
 .netrwhist
