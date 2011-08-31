@@ -21,7 +21,7 @@ The completions provided by CTRL-X CTRL-O are sensitive to the context:
 
 Notes:
  - Vim will load/evaluate code in order to provide completions.  This may
-   cause some code execution, which may be a concern. This is no longer 
+   cause some code execution, which may be a concern. This is no longer
    enabled by default, to enable this feature add >
      let g:rubycomplete_buffer_loading = 1
 < - In context 1 above, Vim can parse the entire buffer to add a list of

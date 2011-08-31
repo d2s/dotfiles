@@ -19,7 +19,7 @@ endfunction
 
 command! -bang -narg=? -complete=file   FuzzyFinderTextMate   call FuzzyFinderTextMateLauncher(<q-args>, len(<q-bang>))
 command! FuzzyFinderTextMateRefreshFiles ruby refresh_finder
-  
+
 function! InstantiateTextMateMode() "{{{
 ruby << RUBY
   begin
@@ -118,7 +118,7 @@ RUBY
   function! FuzzyFinderTextMateLauncher(initial_text, partial_matching)
     call g:FuzzyFinderMode.TextMate.launch(a:initial_text, a:partial_matching)
   endfunction
-  
+
   let g:FuzzyFinderOptions.TextMate = copy(g:FuzzyFinderOptions.File)
 endfunction "}}}
 

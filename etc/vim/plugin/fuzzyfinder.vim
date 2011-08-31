@@ -424,8 +424,8 @@
 "     - Added 'initialInput' option to automatically insert a text at the
 "       beginning of a mode.
 "     - Changed that 'excludedPath' option works for the entire path.
-"     - Renamed some options. 
-"     - Changed default values of some options. 
+"     - Renamed some options.
+"     - Changed default values of some options.
 "     - Packed the mode-specific options to dictionaries.
 "     - Removed some options.
 "
@@ -539,7 +539,7 @@ function! s:FilterEx(in, expr, limit)
   return result
 endfunction
 
-" 
+"
 function! s:FilterMatching(items, key, pattern, index, limit)
   return s:FilterEx(a:items, 'v:val[''' . a:key . '''] =~ ' . string(a:pattern) . ' || v:val.index == ' . a:index, a:limit)
 endfunction
@@ -653,7 +653,7 @@ function! s:EvaluateMatchingRate(word, base)
   return rate / skip_penalty
 endfunction
 
-" 
+"
 function! s:EvaluateLearningRank(word, stats)
   for i in range(len(a:stats))
     if a:stats[i].word ==# a:word
@@ -1232,8 +1232,8 @@ function! g:FuzzyFinderMode.File.cached_glob(dir, file, excluded, index, limit)
   endif
   echo 'Filtering file list...'
   let result = s:FilterMatching(self.cache[key], 'tail', a:file, a:index, a:limit)
-  call map(result, '{ "index" : v:val.index, "word" : (v:val.head == key ? a:dir : v:val.head) . v:val.tail . v:val.suffix }') 
-  return map(result, 's:SetFormattedAbbr(v:val, "word", self.trim_length)') 
+  call map(result, '{ "index" : v:val.index, "word" : (v:val.head == key ? a:dir : v:val.head) . v:val.tail . v:val.suffix }')
+  return map(result, 's:SetFormattedAbbr(v:val, "word", self.trim_length)')
 endfunction
 
 " OBJECT: g:FuzzyFinderMode.Dir ----------------------------------------- {{{1
@@ -1263,8 +1263,8 @@ function! g:FuzzyFinderMode.Dir.cached_glob_dir(dir, file, excluded, index, limi
   endif
   echo 'Filtering file list...'
   let result = s:FilterMatching(self.cache[key], 'tail', a:file, a:index, a:limit)
-  call map(result, '{ "index" : v:val.index, "word" : (v:val.head == key ? a:dir : v:val.head) . v:val.tail . v:val.suffix }') 
-  return map(result, 's:SetFormattedAbbr(v:val, "word", self.trim_length)') 
+  call map(result, '{ "index" : v:val.index, "word" : (v:val.head == key ? a:dir : v:val.head) . v:val.tail . v:val.suffix }')
+  return map(result, 's:SetFormattedAbbr(v:val, "word", self.trim_length)')
 endfunction
 
 " OBJECT: g:FuzzyFinderMode.MruFile ------------------------------------- {{{1
@@ -1443,7 +1443,7 @@ function! g:FuzzyFinderMode.Tag.find_tag(pattern, index, limit)
     return []
   endif
   let key = join(self.tag_files, "\n")
-  " cache not created or tags file updated? 
+  " cache not created or tags file updated?
   call extend(self, { 'cache' : {} }, 'keep')
   if !exists('self.cache[key]') || max(map(copy(self.tag_files), 'getftime(v:val) >= self.cache[key].time'))
     echo 'Caching tag list...'
@@ -1477,7 +1477,7 @@ function! g:FuzzyFinderMode.TaggedFile.find_tagged_file(pattern, index, limit)
     return []
   endif
   let key = join(self.tag_files, "\n")
-  " cache not created or tags file updated? 
+  " cache not created or tags file updated?
   call extend(self, { 'cache' : {} }, 'keep')
   if !exists('self.cache[key]') || max(map(copy(self.tag_files), 'getftime(v:val) >= self.cache[key].time'))
     echo 'Caching tagged-file list...'
@@ -1567,7 +1567,7 @@ function! s:InfoFileManager.load()
       let g:FuzzyFinderOptions.Base.info_file = ''
       throw 1
     endif
-  catch /.*/ 
+  catch /.*/
     let lines = []
   endtry
   for m in s:GetAvailableModes()
@@ -1582,7 +1582,7 @@ function! s:InfoFileManager.save()
   endfor
   try
     call writefile(lines, expand(self.get_info_file()))
-  catch /.*/ 
+  catch /.*/
   endtry
 endfunction
 

@@ -483,7 +483,7 @@ See also: |fuzzyfinder-vimrc-sample|
 
                                                *:FuzzyFinderTagWithCursorWord*
 :FuzzyFinderTagWithCursorWord [{text}]
-                Is mostly the same as |:FuzzyFinderTag|, except that 
+                Is mostly the same as |:FuzzyFinderTag|, except that
 
                                                       *:FuzzyFinderTaggedFile*
 :FuzzyFinderTaggedFile [{text}]
@@ -1232,8 +1232,8 @@ CHANGELOG                                              *fuzzyfinder-changelog*
   - Added 'initialInput' option to automatically insert a text at the
     beginning of a mode.
   - Changed that 'excludedPath' option works for the entire path.
-  - Renamed some options. 
-  - Changed default values of some options. 
+  - Renamed some options.
+  - Changed default values of some options.
   - Packed the mode-specific options to dictionaries.
   - Removed some options.
 
