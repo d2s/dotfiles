@@ -19,26 +19,26 @@ else
   link ~/projects/dotfiles/etc/bashrc ~/.bashrc
   link ~/projects/dotfiles/etc/bashrc_help ~/.bashrc_help
   link ~/projects/dotfiles/etc/bashrc_app_specific ~/.bashrc_app_specific
-  
+
   # vim
   link ~/projects/dotfiles/etc/vim/vimrc ~/.vimrc
   link ~/projects/dotfiles/etc/vim/gvimrc ~/.gvimrc
   link ~/projects/dotfiles/etc/vim ~/.vim
-  
+
   # git
   link ~/projects/dotfiles/etc/gitconfig ~/.gitconfig
   link ~/projects/dotfiles/etc/gitignore ~/.gitignore
   link ~/projects/dotfiles/etc/gitattributes ~/.gitattributes
-  
+
   # misc
   link ~/projects/dotfiles/etc/subversion ~/.subversion
   link ~/projects/dotfiles/etc/autotest ~/.autotest
   link ~/projects/dotfiles/etc/irbrc ~/.irbrc
   link ~/projects/dotfiles/etc/ssh_config ~/.ssh/config
-  
+
   # irb
   #link ~/projects/dotfiles/etc/irbrc ~/.irbrc
-  
+
 
   # make backup directory so that vim will work as set in vimrc
   mkdir ~/backup
@@ -47,7 +47,7 @@ else
 
   # add symbolic link just in case some configs assume that things are under ~/cl
   ln -s ~/projects/dotfiles ~/cl
-  
+
   source ~/.bash_profile
 
 fi

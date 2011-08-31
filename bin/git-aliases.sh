@@ -4,7 +4,7 @@
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 
 # Shows history of changes (changelog) in less
-alias gl="git log | less" 
+alias gl="git log | less"
 
 # Show history in short format with colors
 alias lg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"

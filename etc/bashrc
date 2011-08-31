@@ -14,7 +14,7 @@ fi
 # Colors ----------------------------------------------------------
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
-export CLICOLOR=1 
+export CLICOLOR=1
 
 if [ "$OS" = "linux" ] ; then
   alias ls='ls --color=auto' # For linux, etc
@@ -52,7 +52,7 @@ export HISTCONTROL=ignoredups
 export HISTFILESIZE=3000
 export HISTIGNORE="ls:cd:[bf]g:exit:..:...:ll:lla"
 alias h=history
-hf(){ 
+hf(){
   grep "$@" ~/.bash_history
 }
 
@@ -76,8 +76,8 @@ if [ $IS_INTERACTIVE = 'true' ] ; then # Interactive shell only
 
   # Completion -------------------------------------------------------
 
-  # Turn on advanced bash completion if the file exists 
-  # Get it here: http://www.caliban.org/bash/index.shtml#completion) or 
+  # Turn on advanced bash completion if the file exists
+  # Get it here: http://www.caliban.org/bash/index.shtml#completion) or
   # on OSX: sudo port install bash-completion
   if [ -f /etc/bash_completion ]; then
       . /etc/bash_completion
@@ -90,7 +90,7 @@ if [ $IS_INTERACTIVE = 'true' ] ; then # Interactive shell only
   source ~/projects/dotfiles/bin/git-completion.bash
 
   # Add completion to source and .
-  complete -F _command source 
+  complete -F _command source
   complete -F _command .
 
 
@@ -121,7 +121,7 @@ if [ $IS_INTERACTIVE = 'true' ] ; then # Interactive shell only
 
   # export PS1="\[${COLOR_GREEN}\]\w\[${COLOR_NC}\] > "  # Primary prompt with only a path
   # export PS1="\[${COLOR_RED}\]\w > \[${COLOR_NC}\]"  # Primary prompt with only a path, for root, need condition to use this for root
-  # export PS1="\[${COLOR_GRAY}\]\u@\h \[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with user, host, and path 
+  # export PS1="\[${COLOR_GRAY}\]\u@\h \[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with user, host, and path
   # This runs before the prompt and sets the title of the xterm* window.  If you set the title in the prompt
   # weird wrapping errors occur on some systems, so this method is superior
   #export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/} ${USER}@${HOSTNAME%%.*}"; echo -ne "\007"'  # user@host path
@@ -132,7 +132,7 @@ if [ $IS_INTERACTIVE = 'true' ] ; then # Interactive shell only
 
   function xtitle {  # change the title of your xterm* window
     unset PROMPT_COMMAND
-    echo -ne "\033]0;$1\007" 
+    echo -ne "\033]0;$1\007"
   }
 
 fi
@@ -142,7 +142,7 @@ fi
 # Navigation -------------------------------------------------------
 alias ..='cd ..'
 alias ...='cd .. ; cd ..'
-cl() { cd $1; ls -la; } 
+cl() { cd $1; ls -la; }
 
 source ~/cl/bin/bashmarks.sh
 
@@ -162,7 +162,7 @@ alias mvimt='mvim --remote-tab'
 # Security ---------------------------------------------------------
 
 # Folder shared by a group
-# chmod g+s directory 
+# chmod g+s directory
 #find /foo -type f -print | xargs chmod g+rw,o-rwx,u+rw
 #find /foo -type d -print | xargs chmod g+rwxs,o-rwx,u+rwx
 
@@ -177,7 +177,7 @@ findportuser() {
 
 monitor_traffic(){
   # install ngrep with sudo port install ngrep
-  sudo ngrep -W byline -qld en1 "$1" 
+  sudo ngrep -W byline -qld en1 "$1"
 }
 
 
@@ -221,7 +221,7 @@ alias mv='mv -i'
 # Search
 # Use ack for grepping and find if ack is available
 # sudo port install p5-app-ack
-if type -P ack &>/dev/null ; then 
+if type -P ack &>/dev/null ; then
   g(){
     ack "$*" --all-types --color-match=green --color-filename=blue --smart-case
   }
@@ -326,7 +326,7 @@ if [ $IS_INTERACTIVE = 'true' ] ; then
   source ~/projects/dotfiles/bin/rr/rr.sh # Rails tools
   source ~/projects/dotfiles/bin/gt/gt.sh # Git tools
   source ~/projects/dotfiles/bin/sv/sv.sh # SVN tools
-  
+
   source ~/projects/dotfiles/bin/git-aliases.sh # Git additional aliases
   source ~/projects/dotfiles/bin/other-aliases.sh # Other aliases
 fi
@@ -337,7 +337,7 @@ fi
 
 
 
-# Test ------------------------------------------------------------------------ 
+# Test ------------------------------------------------------------------------
 
 #if [ "$OS" = "linux" ] ; then
 #elif

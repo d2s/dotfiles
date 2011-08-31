@@ -2,7 +2,7 @@ if type -P mysql &>/dev/null ; then # This script only works if you have 'mysql'
 
   # Currently, this only works with a local mysql without a password (my dev environment)
 
-  alias mqshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands: 
+  alias mqshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands:
      ${COLOR_BLUE}mq${COLOR_NC}databases${COLOR_NC}
      ${COLOR_BLUE}mq${COLOR_NC}use${COLOR_BLUE}database${COLOR_NC}
      ${COLOR_BLUE}mq${COLOR_NC}create${COLOR_BLUE}database${COLOR_NC}
@@ -40,7 +40,7 @@ if type -P mysql &>/dev/null ; then # This script only works if you have 'mysql'
     mysql -u ${MYSQL_DEFAULT_USER} -t -vvv ${MYSQL_DEFAULT_DB} < $1 >> $2
   }
   mqrunfiletoeditor (){
-    mysql -u ${MYSQL_DEFAULT_USER} -t -vvv ${MYSQL_DEFAULT_DB} < $1 | vim - 
+    mysql -u ${MYSQL_DEFAULT_USER} -t -vvv ${MYSQL_DEFAULT_DB} < $1 | vim -
   }
   mqscriptrun (){
     mysql --silent --skip-column-names -u ${MYSQL_DEFAULT_USER} -D ${MYSQL_DEFAULT_DB} -e "$@"
@@ -77,7 +77,7 @@ if type -P mysql &>/dev/null ; then # This script only works if you have 'mysql'
     echo -e "\nCurrent DB: ${MYSQL_DEFAULT_DB}"
   }
 
-  alias mqtables='mqrun  "show tables"' 
+  alias mqtables='mqrun  "show tables"'
   mqfields(){
     mqrun "describe $@"
   }
@@ -89,7 +89,7 @@ if type -P mysql &>/dev/null ; then # This script only works if you have 'mysql'
 
   mqdropdatabase(){
     echo Warning | highlight red '.*'
-    mysqladmin -u ${MYSQL_DEFAULT_USER} drop $@ 
+    mysqladmin -u ${MYSQL_DEFAULT_USER} drop $@
   }
 
   # Completion

@@ -27,10 +27,10 @@ alias svcommit='sv commit'
 alias svadd='sv add'
 alias svaddall='sv status | grep "^\?" | awk "{print \$2}" | xargs svn add'
 alias svdelete='sv delete'
-alias svhelp='sv help' 
+alias svhelp='sv help'
 alias svblame='sv blame'
 alias svdeletesvnfolders='find . -name ".svn" -exec rm -rf {} \;'
-alias svexcludeswpfiles='sv propset svn:ignore "*.swp" .' 
+alias svexcludeswpfiles='sv propset svn:ignore "*.swp" .'
 alias svdeleteall='sv status | grep "^\!" | awk "{print \$2}" | xargs svn delete'
 
 svupdate (){

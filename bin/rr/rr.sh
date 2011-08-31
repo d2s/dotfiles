@@ -1,5 +1,5 @@
 # Rails and Rake -------------------------------------------------
-alias rrshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands: 
+alias rrshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands:
    ${COLOR_BLUE}rr${COLOR_NC}server
    ${COLOR_BLUE}rr${COLOR_NC}server${COLOR_BLUE}production
    ${COLOR_BLUE}rr${COLOR_NC}generate

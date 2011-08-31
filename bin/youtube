@@ -53,7 +53,7 @@ def preferredencoding():
 
 def htmlentity_transform(matchobj):
 	"""Transforms an HTML entity to a Unicode character.
-	
+
 	This function receives a match object and is intended to be used with
 	the re.sub() function.
 	"""
@@ -108,7 +108,7 @@ def sanitize_open(filename, open_mode):
 
 class DownloadError(Exception):
 	"""Download Error exception.
-	
+
 	This exception may be thrown by FileDownloader objects if they are not
 	configured to continue on errors. They will contain the appropriate
 	error message.
@@ -210,7 +210,7 @@ class FileDownloader(object):
 		self._download_retcode = 0
 		self._num_downloads = 0
 		self.params = params
-	
+
 	@staticmethod
 	def pmkdir(filename):
 		"""Create directory components in filename. Similar to Unix "mkdir -p"."""
@@ -220,7 +220,7 @@ class FileDownloader(object):
 		for dir in aggregate:
 			if not os.path.exists(dir):
 				os.mkdir(dir)
-	
+
 	@staticmethod
 	def format_bytes(bytes):
 		if bytes is None:
@@ -299,12 +299,12 @@ class FileDownloader(object):
 		"""Add an InfoExtractor object to the end of the list."""
 		self._ies.append(ie)
 		ie.set_downloader(self)
-	
+
 	def add_post_processor(self, pp):
 		"""Add a PostProcessor object to the end of the chain."""
 		self._pps.append(pp)
 		pp.set_downloader(self)
-	
+
 	def to_stdout(self, message, skip_eol=False, ignore_encoding_errors=False):
 		"""Print message to stdout if not in quiet mode."""
 		try:
@@ -314,11 +314,11 @@ class FileDownloader(object):
 		except (UnicodeEncodeError), err:
 			if not ignore_encoding_errors:
 				raise
-	
+
 	def to_stderr(self, message):
 		"""Print message to stderr."""
 		print >>sys.stderr, message.encode(preferredencoding())
-	
+
 	def fixed_template(self):
 		"""Checks if the output template is fixed."""
 		return (re.search(ur'(?u)%\(.+?\)s', self.params['outtmpl']) is None)
@@ -352,7 +352,7 @@ class FileDownloader(object):
 	def report_destination(self, filename):
 		"""Report destination filename."""
 		self.to_stdout(u'[download] Destination: %s' % filename, ignore_encoding_errors=True)
-	
+
 	def report_progress(self, percent_str, data_len_str, speed_str, eta_str):
 		"""Report download progress."""
 		if self.params.get('noprogress', False):
@@ -363,18 +363,18 @@ class FileDownloader(object):
 	def report_resuming_byte(self, resume_len):
 		"""Report attemtp to resume at given byte."""
 		self.to_stdout(u'[download] Resuming download at byte %s' % resume_len)
-	
+
 	def report_file_already_downloaded(self, file_name):
 		"""Report file has already been fully downloaded."""
 		try:
 			self.to_stdout(u'[download] %s has already been downloaded' % file_name)
 		except (UnicodeEncodeError), err:
 			self.to_stdout(u'[download] The file has already been downloaded')
-	
+
 	def report_unable_to_resume(self):
 		"""Report it was impossible to resume download."""
 		self.to_stdout(u'[download] Unable to resume')
-	
+
 	def report_finish(self):
 		"""Report download finished."""
 		if self.params.get('noprogress', False):
@@ -400,7 +400,7 @@ class FileDownloader(object):
 				print info_dict['url'].encode(preferredencoding(), 'xmlcharrefreplace')
 
 			return
-			
+
 		try:
 			template_dict = dict(info_dict)
 			template_dict['epoch'] = unicode(long(time.time()))
@@ -470,7 +470,7 @@ class FileDownloader(object):
 			info = pp.run(info)
 			if info is None:
 				break
-	
+
 	def _download_with_rtmpdump(self, filename, url):
 		self.report_destination(filename)
 
@@ -632,7 +632,7 @@ class InfoExtractor(object):
 	def set_downloader(self, downloader):
 		"""Sets the downloader for this IE."""
 		self._downloader = downloader
-	
+
 	def _real_initialize(self):
 		"""Real initialization process. Redefine in subclasses."""
 		pass
@@ -669,27 +669,27 @@ class YoutubeIE(InfoExtractor):
 	def report_login(self):
 		"""Report attempt to log in."""
 		self._downloader.to_stdout(u'[youtube] Logging in')
-	
+
 	def report_age_confirmation(self):
 		"""Report attempt to confirm age."""
 		self._downloader.to_stdout(u'[youtube] Confirming age')
-	
+
 	def report_video_info_webpage_download(self, video_id):
 		"""Report attempt to download video info webpage."""
 		self._downloader.to_stdout(u'[youtube] %s: Downloading video info webpage' % video_id)
-	
+
 	def report_information_extraction(self, video_id):
 		"""Report attempt to extract video information."""
 		self._downloader.to_stdout(u'[youtube] %s: Extracting video information' % video_id)
-	
+
 	def report_unavailable_format(self, video_id, format):
 		"""Report extracted video URL."""
 		self._downloader.to_stdout(u'[youtube] %s: Format %s not available' % (video_id, format))
-	
+
 	def report_rtmp_download(self):
 		"""Indicate the download will use the RTMP protocol."""
 		self._downloader.to_stdout(u'[youtube] RTMP download detected')
-	
+
 	def _real_initialize(self):
 		if self._downloader is None:
 			return
@@ -745,7 +745,7 @@ class YoutubeIE(InfoExtractor):
 		except (urllib2.URLError, httplib.HTTPException, socket.error), err:
 			self._downloader.to_stderr(u'WARNING: unable to log in: %s' % str(err))
 			return
-	
+
 		# Confirm age
 		age_form = {
 				'next_url':		'/',
@@ -881,7 +881,7 @@ class YoutubeIE(InfoExtractor):
 						if format_param == None:
 							return
 						continue
-				else: 
+				else:
 					self._downloader.trouble('ERROR: format not available for video')
 					return
 
@@ -909,11 +909,11 @@ class MetacafeIE(InfoExtractor):
 	def report_age_confirmation(self):
 		"""Report attempt to confirm age."""
 		self._downloader.to_stdout(u'[metacafe] Confirming age')
-	
+
 	def report_download_webpage(self, video_id):
 		"""Report webpage download."""
 		self._downloader.to_stdout(u'[metacafe] %s: Downloading webpage' % video_id)
-	
+
 	def report_extraction(self, video_id):
 		"""Report information extraction."""
 		self._downloader.to_stdout(u'[metacafe] %s: Extracting information' % video_id)
@@ -940,7 +940,7 @@ class MetacafeIE(InfoExtractor):
 		except (urllib2.URLError, httplib.HTTPException, socket.error), err:
 			self._downloader.trouble(u'ERROR: unable to confirm age: %s' % str(err))
 			return
-	
+
 	def _real_extract(self, url):
 		# Extract id and simplified title from URL
 		mobj = re.match(self._VALID_URL, url)
@@ -1415,7 +1415,7 @@ class YoutubeSearchIE(InfoExtractor):
 	def __init__(self, youtube_ie, downloader=None):
 		InfoExtractor.__init__(self, downloader)
 		self._youtube_ie = youtube_ie
-	
+
 	@staticmethod
 	def suitable(url):
 		return (re.match(YoutubeSearchIE._VALID_QUERY, url) is not None)
@@ -1427,7 +1427,7 @@ class YoutubeSearchIE(InfoExtractor):
 
 	def _real_initialize(self):
 		self._youtube_ie.initialize()
-	
+
 	def _real_extract(self, query):
 		mobj = re.match(self._VALID_QUERY, query)
 		if mobj is None:
@@ -1506,7 +1506,7 @@ class YoutubePlaylistIE(InfoExtractor):
 	def __init__(self, youtube_ie, downloader=None):
 		InfoExtractor.__init__(self, downloader)
 		self._youtube_ie = youtube_ie
-	
+
 	@staticmethod
 	def suitable(url):
 		return (re.match(YoutubePlaylistIE._VALID_URL, url) is not None)
@@ -1517,7 +1517,7 @@ class YoutubePlaylistIE(InfoExtractor):
 
 	def _real_initialize(self):
 		self._youtube_ie.initialize()
-	
+
 	def _real_extract(self, url):
 		# Extract playlist id
 		mobj = re.match(self._VALID_URL, url)
@@ -1565,7 +1565,7 @@ class YoutubeUserIE(InfoExtractor):
 	def __init__(self, youtube_ie, downloader=None):
 		InfoExtractor.__init__(self, downloader)
 		self._youtube_ie = youtube_ie
-	
+
 	@staticmethod
 	def suitable(url):
 		return (re.match(YoutubeUserIE._VALID_URL, url) is not None)
@@ -1576,7 +1576,7 @@ class YoutubeUserIE(InfoExtractor):
 
 	def _real_initialize(self):
 		self._youtube_ie.initialize()
-	
+
 	def _real_extract(self, url):
 		# Extract username
 		mobj = re.match(self._VALID_URL, url)
@@ -1634,7 +1634,7 @@ class PostProcessor(object):
 	def set_downloader(self, downloader):
 		"""Sets the downloader for this PP."""
 		self._downloader = downloader
-	
+
 	def run(self, information):
 		"""Run the PostProcessor.
 
@@ -1654,7 +1654,7 @@ class PostProcessor(object):
 		it was called from.
 		"""
 		return information # by default, do nothing
-	
+
 ### MAIN PROGRAM ###
 if __name__ == '__main__':
 	try:
@@ -1752,7 +1752,7 @@ if __name__ == '__main__':
 		parser.add_option_group(filesystem)
 
 		(opts, args) = parser.parse_args()
-        
+
 		# Batch file verification
 		batchurls = []
 		if opts.batchfile is not None:
