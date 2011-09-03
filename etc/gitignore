@@ -93,6 +93,9 @@ db/*.sqlite3
 # (normally autosaved items etc.)
 *~
 
+# SASS cache files
+.sass-cache
+
 
 # Erlang
 .eunit
