@@ -329,14 +329,31 @@ fi
 alias virhetesti="xmllint --debug *.xml | grep error"
 
 
+# rak - grep replacement in pure Ruby: http://rak.rubyforge.org
+#alias rak='rak -a'
+
+
+
+# Functions -------------------------------------------------------------------
+
 # grep through history
 function hf() {
   history | grep $1
 }
 
 
-# rak - grep replacement in pure Ruby: http://rak.rubyforge.org
-#alias rak='rak -a'
+# opens new tab in terminal to same directory as current
+function nt {
+  terminal_clone_command="
+tell application \"Terminal\"
+  tell application \"System Events\" to tell process \"Terminal\" to keystroke \"t\" using command down
+  do script with command \"cd `pwd`; clear\" in  selected tab of the front window
+end tell
+"
+  echo "$terminal_clone_command" | osascript &>/dev/null
+}
+
+
 
 
 # Bring in the other files ----------------------------------------------------
