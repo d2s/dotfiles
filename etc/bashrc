@@ -77,14 +77,24 @@ if [ $IS_INTERACTIVE = 'true' ] ; then # Interactive shell only
   # Completion -------------------------------------------------------
 
   # Turn on advanced bash completion if the file exists
-  # Get it here: http://www.caliban.org/bash/index.shtml#completion) or
-  # on OSX: sudo port install bash-completion
+  # Get it here: http://www.caliban.org/bash/index.shtml#completion) OR
+  #
+  # If using Homebrew:
+  #   brew install bash-completion
+  # If using MacPorts:
+  #   sudo port install bash-completion
   if [ -f /etc/bash_completion ]; then
       . /etc/bash_completion
   fi
   if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
   fi
+  if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+  fi
+
+
+
 
   # git completion
   source ~/projects/dotfiles/bin/git-completion.bash
@@ -150,8 +160,8 @@ source ~/cl/bin/bashmarks.sh
 
 # Editors ----------------------------------------------------------
 #export EDITOR='mate -w'  # OS-X SPECIFIC - TextMate, w is to wait for TextMate window to close
-#export EDITOR='gedit'  #Linux/gnome
-export EDITOR='vim'  #Command line
+#export EDITOR='gedit'    # Linux/gnome
+export EDITOR='vim'       # Command line
 export GIT_EDITOR='vim'
 #alias gvim='/Applications/MacVim.app/Contents/MacOS/vim -g'
 
@@ -220,7 +230,13 @@ alias mv='mv -i'
 
 # Search
 # Use ack for grepping and find if ack is available
-# sudo port install p5-app-ack
+#
+# Installing:
+#   If you use Homebrew:
+#     brew install ack
+#   If you use MacPorts:
+#     sudo port install p5-app-ack
+
 if type -P ack &>/dev/null ; then
   g(){
     ack "$*" --all-types --color-match=green --color-filename=blue --smart-case
@@ -246,9 +262,9 @@ fi
 
 alias reloadbash='source ~/projects/dotfiles/etc/bash_profile'
 
-alias ducks='du -cksh * | sort -rn|head -11' # Lists folders and files sizes in the current folder
+alias ducks='du -cksh * | sort -rn|head -11'  # Lists folders and files sizes in the current folder
 alias m='more'
-alias top='top -o cpu' # os x
+alias top='top -o cpu'  # OS X
 
 alias df='df -h' # Show disk usage
 
@@ -286,6 +302,7 @@ killhard() {
 # alias to Sublime Text 2 -editor if it's installed
 if [ -d /Applications/Sublime\ Text\ 2.app ]; then
   alias slt='open -a "Sublime Text 2"'
+  alias e='open -a "Sublime Text 2"'
 fi
 
 
@@ -322,12 +339,12 @@ alias virhetesti="xmllint --debug *.xml | grep error"
 if [ $IS_INTERACTIVE = 'true' ] ; then
   source ~/.bashrc_help
 
-  source ~/projects/dotfiles/bin/mq/mq.sh # MySQL tools
-  source ~/projects/dotfiles/bin/rr/rr.sh # Rails tools
-  source ~/projects/dotfiles/bin/gt/gt.sh # Git tools
-  source ~/projects/dotfiles/bin/sv/sv.sh # SVN tools
+  source ~/projects/dotfiles/bin/mq/mq.sh   # MySQL tools
+  source ~/projects/dotfiles/bin/rr/rr.sh   # Rails tools
+  source ~/projects/dotfiles/bin/gt/gt.sh   # Git tools
+  source ~/projects/dotfiles/bin/sv/sv.sh   # SVN tools
 
-  source ~/projects/dotfiles/bin/git-aliases.sh # Git additional aliases
+  source ~/projects/dotfiles/bin/git-aliases.sh   # Git additional aliases
   source ~/projects/dotfiles/bin/other-aliases.sh # Other aliases
 fi
 
