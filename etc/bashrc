@@ -329,6 +329,10 @@ fi
 alias virhetesti="xmllint --debug *.xml | grep error"
 
 
+# grep through history
+function hf() {
+  history | grep $1
+}
 
 
 # rak - grep replacement in pure Ruby: http://rak.rubyforge.org
