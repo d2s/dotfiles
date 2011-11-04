@@ -152,7 +152,11 @@ fi
 # Navigation -------------------------------------------------------
 alias ..='cd ..'
 alias ...='cd .. ; cd ..'
+<<<<<<< HEAD
 cl() { cd $1; ls -la; }
+=======
+cl() { cd $1; ls -la; } 
+>>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
 
 source ~/cl/bin/bashmarks.sh
 
@@ -185,15 +189,33 @@ findportuser() {
     lsof -i :"$1"
 }
 
+<<<<<<< HEAD
 monitor_traffic(){
   # install ngrep with sudo port install ngrep
   sudo ngrep -W byline -qld en1 "$1"
+=======
+findhosts(){
+  nmap -sP -n -oG - "$1"/24 | grep "Up" | awk '{print $2}' -
+  echo "To scan those do: nmap $1-254" 
+  echo "To scan and OS detect those do: sudo nmap -O $1-254" 
+  echo "To intensly scan one do: sudo nmap -sV -vv -PN $1"
+}
+
+monitor_traffic(){
+  # install ngrep with sudo port install ngrep
+  sudo ngrep -W byline -qld en1 "$1" 
+>>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
 }
 
 
 
+<<<<<<< HEAD
 # Directory listings -----------------------------------------------
 alias ls='ls -Fh'
+=======
+
+# Other aliases ----------------------------------------------------
+>>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
 alias ll='ls -hl'
 alias la='ls -A'
 alias lla='ls -lah'
@@ -238,18 +260,28 @@ alias mv='mv -i'
 #     sudo port install p5-app-ack
 
 if type -P ack &>/dev/null ; then
+=======
+# sudo port install p5-app-ack
+if type -P ack &>/dev/null ; then 
+>>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
   g(){
     ack "$*" --all-types --color-match=green --color-filename=blue --smart-case
   }
   gw(){
     ack "$*" --all-types --color-match=green --color-filename=blue --word-regexp --smart-case
+<<<<<<< HEAD
+=======
+  }
+  gnolog(){
+    ack "$*" --all-types --ignore-dir=log --color-match=green --color-filename=blue --smart-case
+>>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
   }
   f(){
     ack -i -g ".*$*[^\/]*$" | highlight blue ".*/" green "$*[^/]"
   }
 else
   g(){
-    grep -Ri $1 *
+    grep -Rin $1 *
   }
   f(){
     find . -iname "$1"
@@ -353,6 +385,15 @@ end tell
   echo "$terminal_clone_command" | osascript &>/dev/null
 }
 
+
+
+# Ruby ----------------------------------------------------
+
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+
+# Fixes problems with sending email in ruby
+export RUBYOPT="-r openssl"
 
 
 
