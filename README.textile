@@ -21,7 +21,7 @@ then I add the dot in the link.  So if you use one, make sure you put the dot ba
 
 h2. Warning
 
-I mod these all the time, and sometimes I break stuff.  Also, my main platforms are OS X and Linux (Debian based)
+I mod these all the time, and sometimes I break stuff. Also, my main platforms are OS X and Linux (Debian based)
 in the console, not XWindows.  Most of my stuff works just fine in something like gnome-terminal,
 but I usually only check my main platforms when I make changes.
 
