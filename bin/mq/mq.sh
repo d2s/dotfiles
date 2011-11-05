@@ -84,12 +84,9 @@ if type -P mysql &>/dev/null ; then # This script only works if you have 'mysql'
     echo -e "\nCurrent DB: ${MYSQL_DEFAULT_DB}"
   }
 
-<<<<<<< HEAD
-  alias mqtables='mqrun  "show tables"'
-=======
-  alias mqtables='mqrun "show tables"' 
 
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
+  alias mqtables='mqrun  "show tables"'
+
   mqfields(){
     mqrun "describe $@"
   }

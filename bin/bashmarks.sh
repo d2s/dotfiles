@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 # Bashmarks is a simple set of bash functions that allows you to bookmark
 # folders in the command-line.
 #
 # To install, put bashmarks.sh somewhere such as ~/bin, then source it
-=======
-# Bashmarks is a simple set of bash functions that allows you to bookmark 
-# folders in the command-line.
-# 
-# To install, put bashmarks.sh somewhere such as ~/bin, then source it 
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
 # in your .bashrc file (or other bash startup file):
 #   source ~/bin/bashmarks.sh
 #
@@ -22,17 +15,10 @@
 #
 # To see a list of bookmarks:
 #   bookmarksshow
-<<<<<<< HEAD
 #
 # Tab completion works, to go to the shoobie bookmark:
 #   go sho[tab]
 #
-=======
-# 
-# Tab completion works, to go to the shoobie bookmark:
-#   go sho[tab]
-# 
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
 # Your bookmarks are stored in the ~/.bookmarks file
 
 bookmarks_file=~/.bookmarks
@@ -58,11 +44,7 @@ bookmark (){
       echo "Bookmark already existed"
     fi
   fi
-<<<<<<< HEAD
 }
-=======
-} 
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
 
 # Show a list of the bookmarks
 bookmarksshow (){
@@ -82,11 +64,7 @@ go(){
     echo '  bookmark foo'
   else
     dir=`echo "$bookmark" | cut -d\| -f1`
-<<<<<<< HEAD
     cd "$dir"
-=======
-    cd "$dir" 
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
   fi
 }
 
@@ -95,8 +73,4 @@ _go_complete(){
   cat $bookmarks_file | cut -d\| -f2 | grep "$2.*"
 }
 
-<<<<<<< HEAD
 complete -C _go_complete -o default go
-=======
-complete -C _go_complete -o default go 
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
