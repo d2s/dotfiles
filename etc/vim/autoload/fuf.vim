@@ -72,27 +72,8 @@ function fuf#expandTailDotSequenceToParentDir(pattern)
 endfunction
 
 "
-<<<<<<< HEAD
-function fuf#hash224(str)
-  let a = 0x00000800 " shift 11 bit
-  let b = 0x001fffff " extract 11 bit
-  let nHash = 7
-  let hashes = repeat([0], nHash)
-  for i in range(len(a:str))
-    let iHash = i % nHash
-    let hashes[iHash] = hashes[iHash] * a + hashes[iHash] / b
-    let hashes[iHash] += char2nr(a:str[i])
-  endfor
-  return join(map(hashes, 'printf("%08x", v:val)'), '')
-endfunction
-
-"
-function fuf#formatPrompt(prompt, partialMatching)
-  let indicator = (a:partialMatching ? '!' : '')
-=======
 function fuf#formatPrompt(prompt, partialMatching, otherString)
   let indicator = escape((a:partialMatching ? '!' : '') . a:otherString, '\')
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
   return substitute(a:prompt, '[]', indicator, 'g')
 endfunction
 
@@ -103,15 +84,7 @@ function fuf#getFileLines(file)
   if !empty(lines)
     return lines
   endif
-<<<<<<< HEAD
-  try
-    return readfile(expand(a:file))
-  catch /.*/
-  endtry
-  return []
-=======
   return l9#readFile(a:file)
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
 endfunction
 
 "
@@ -370,7 +343,7 @@ endfunction
 "
 let s:oneTimeVariables = []
 
-" 
+"
 function fuf#setOneTimeVariables(...)
   let s:oneTimeVariables += a:000
 endfunction
@@ -437,66 +410,24 @@ function fuf#launch(modeName, initialPattern, partialMatching)
 endfunction
 
 "
-<<<<<<< HEAD
-function fuf#loadInfoFile(modeName)
-  try
-    let lines = readfile(expand(g:fuf_infoFile))
-    " compatibility check
-    if count(lines, s:INFO_FILE_VERSION_LINE) == 0
-      call s:warnOldInfoFile()
-      let g:fuf_infoFile = ''
-      throw 1
-    endif
-  catch /.*/
-    let lines = []
-  endtry
-  let s:lastInfoMap = s:deserializeInfoMap(lines)
-  if !exists('s:lastInfoMap[a:modeName]')
-    let s:lastInfoMap[a:modeName] = {}
-=======
 function fuf#loadDataFile(modeName, dataName)
   if !s:dataFileAvailable
     return []
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
   endif
   let lines = l9#readFile(l9#concatPaths([g:fuf_dataDir, a:modeName, a:dataName]))
   return map(lines, 'eval(v:val)')
 endfunction
 
-" 
+"
 function fuf#saveDataFile(modeName, dataName, items)
   if !s:dataFileAvailable
     return -1
   endif
-<<<<<<< HEAD
-  let lines = [ s:INFO_FILE_VERSION_LINE ] + s:serializeInfoMap(s:lastInfoMap)
-  try
-    call writefile(lines, expand(g:fuf_infoFile))
-  catch /.*/
-  endtry
-endfunction
-
-"
-function fuf#editInfoFile()
-  new
-  silent file `='[fuf-info]'`
-  let s:bufNrInfo = bufnr('%')
-  setlocal filetype=vim
-  setlocal bufhidden=delete
-  setlocal buftype=acwrite
-  setlocal noswapfile
-  augroup FufInfo
-    autocmd!
-    autocmd BufWriteCmd <buffer> call s:onBufWriteCmdInfoFile()
-  augroup END
-  execute '0read ' . expand(g:fuf_infoFile)
-  setlocal nomodified
-=======
   let lines = map(copy(a:items), 'string(v:val)')
   return l9#writeFile(lines, l9#concatPaths([g:fuf_dataDir, a:modeName, a:dataName]))
 endfunction
 
-" 
+"
 function fuf#getDataFileTime(modeName, dataName)
   if !s:dataFileAvailable
     return -1
@@ -545,7 +476,6 @@ function fuf#editDataFile()
   let dataFiles = map(copy(fuf#getModeNames()), 's:getEditableDataFiles(v:val)')
   let dataFiles = l9#concat(dataFiles)
   call fuf#callbackitem#launch('', 0, '>Mode>', s:createEditDataListener(), dataFiles, 0)
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
 endfunction
 
 "
@@ -781,7 +711,7 @@ function s:activateFufBuffer()
   lcd .
   let cwd = getcwd()
   call l9#tempbuffer#openScratch(s:FUF_BUF_NAME, 'fuf', [], 1, 0, 1, {})
-  resize 1 " for issue #21 
+  resize 1 " for issue #21
   " lcd ... : countermeasure against auto-cd script
   lcd `=cwd`
   setlocal nocursorline   " for highlighting
@@ -802,77 +732,7 @@ function s:deactivateFufBuffer()
   elseif exists(':AutoComplPopUnlock')
     AutoComplPopUnlock
   endif
-<<<<<<< HEAD
-  " must close after returning to previous window
-  wincmd p
-  execute s:bufNrFuf . 'bdelete'
-endfunction
-
-let s:originalGlobalOptions = {}
-
-"
-function s:setTemporaryGlobalOption(name, value)
-  call extend(s:originalGlobalOptions, { a:name : eval('&' . a:name) }, 'keep')
-  execute printf('let &%s = a:value', a:name)
-endfunction
-
-"
-function s:restoreTemporaryGlobalOptions()
-  for [name, value] in items(s:originalGlobalOptions)
-    execute printf('let &%s = value', name)
-  endfor
-  let s:originalGlobalOptions = {}
-endfunction
-
-"
-function s:warnOldInfoFile()
-  call fuf#echoWithHl(printf("=================================================================\n" .
-        \                    "  Sorry, but your information file for FuzzyFinder is no longer  \n" .
-        \                    "  compatible with this version of FuzzyFinder. Please remove     \n" .
-        \                    "  %-63s\n" .
-        \                    "=================================================================\n" ,
-        \                    '"' . expand(g:fuf_infoFile) . '".'),
-        \           'WarningMsg')
-  echohl Question
-  call input('Press Enter')
-  echohl None
-endfunction
-
-"
-function s:serializeInfoMap(infoMap)
-  let lines = []
-  for [m, info] in items(a:infoMap)
-    for [key, value] in items(info)
-      let lines += map(copy(value), 'm . "\t" . key . "\t" . string(v:val)')
-    endfor
-  endfor
-  return lines
-endfunction
-
-"
-function s:deserializeInfoMap(lines)
-  let infoMap = {}
-  for e in filter(map(a:lines, 'matchlist(v:val, ''^\v(\S+)\s+(\S+)\s+(.+)$'')'), '!empty(v:val)')
-    if !exists('infoMap[e[1]]')
-      let infoMap[e[1]] = {}
-    endif
-    if !exists('infoMap[e[1]][e[2]]')
-      let infoMap[e[1]][e[2]] = []
-    endif
-    call add(infoMap[e[1]][e[2]], eval(e[3]))
-  endfor
-  return infoMap
-endfunction
-
-"
-function s:onBufWriteCmdInfoFile()
-  call fuf#saveInfoFile('', s:deserializeInfoMap(getline(1, '$')))
-  setlocal nomodified
-  execute printf('%dbdelete! ', s:bufNrInfo)
-  echo "Information file updated"
-=======
   call l9#tempbuffer#close(s:FUF_BUF_NAME)
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
 endfunction
 
 " }}}1
@@ -889,14 +749,7 @@ let s:handlerBase = {}
 "
 " "
 " s:handler.getPrompt()
-<<<<<<< HEAD
 "
-" " returns true if the mode deals with file paths.
-" s:handler.targetsPath()
-"
-=======
-" 
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
 " "
 " s:handler.getCompleteItems(patternSet)
 "
@@ -1190,4 +1043,3 @@ call s:checkDataFileCompatibility()
 " }}}1
 "=============================================================================
 " vim: set fdm=marker:
-

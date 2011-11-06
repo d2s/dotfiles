@@ -142,43 +142,11 @@ endfunction
 
 "
 function s:renewCachesOfAllModes()
-<<<<<<< HEAD
-  for m in g:fuf_modes
-=======
   for m in fuf#getModeNames()
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
     call fuf#{m}#renewCache()
   endfor
 endfunction
 
-<<<<<<< HEAD
-"
-function s:onBufEnter()
-  for m in g:fuf_modes
-    call fuf#{m}#onBufEnter()
-  endfor
-endfunction
-
-"
-function s:onBufWritePost()
-  for m in g:fuf_modes
-    call fuf#{m}#onBufWritePost()
-  endfor
-endfunction
-
-"
-function s:onCommandPre()
-  for m in filter(copy(g:fuf_modes), 'fuf#{v:val}#requiresOnCommandPre()')
-      call fuf#{m}#onCommandPre(getcmdtype() . getcmdline())
-  endfor
-  " lets last entry become the newest in the history
-  call histadd(getcmdtype(), getcmdline())
-  " this is not mapped again (:help recursive_mapping)
-  return "\<CR>"
-endfunction
-
-=======
->>>>>>> 931df65229af3bdefc696b7a24ec475aa380950b
 " }}}1
 "=============================================================================
 " INITIALIZATION {{{1
