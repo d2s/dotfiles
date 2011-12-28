@@ -35,6 +35,8 @@ fi
 # https://github.com/sstephenson/rbenv
 if [ -d ~/.rbenv/bin ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
+fi
+if [ -d ~/.rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
