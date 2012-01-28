@@ -359,7 +359,7 @@ fi
 
 # alias to Crash logs / Diagnostic Reports of OS X
 if [ -d ~/Library/Logs/DiagnosticReports ]; then
-  alias crashlogs='cd ~/Library/Logs/DiagnosticReports'
+  alias maccrashlogs='cd ~/Library/Logs/DiagnosticReports'
 fi
 
 # alias to make backup of Crash logs to ~/backups/crashlogs_backup directory
