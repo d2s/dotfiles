@@ -237,6 +237,44 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+
+# One char
+alias s='sudo'
+
+# grep -nP: line numbers, perl regex
+alias grepnum='grep -nP'
+
+# Keep the aliases when using sudo
+alias sudo='sudo '
+
+
+# Shows my public ip
+alias miip='wget -O - -q https://secure.informaction.com/ipecho/'
+
+# back to previous directory path
+alias back='cd $OLDPWD'
+
+# useful for testing own computers
+alias scanfull='sudo nmap -sS -p- -sV -O -T5 -vv --open -PN'
+
+# List open ports on your machine (Mac OS X)
+alias openholes='sudo lsof -i -P | grep -i "listen"'
+
+
+
+# Show system information (Mac OS X)
+if [ -f /usr/sbin/system_profiler ]; then
+  alias hardware-info='/usr/sbin/system_profiler SPHardwareDataType'
+fi
+
+# Copy name of current workind directory to clipboard (Mac OS X)
+if [ -f /usr/bin/pbcopy ]; then
+  alias pwdcopy="pwd | pbcopy"
+fi
+
+
+
+
 # Search
 # Use ack for grepping and find if ack is available
 #
