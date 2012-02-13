@@ -1,6 +1,6 @@
 h1. dotfiles
 
-Originally based of InfiniteRed's dotfiles but things has been adjusted since then.
+Originally based on InfiniteRed's dotfiles but things has been adjusted since then.
 
 
 h2. File and directory structure
