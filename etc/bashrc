@@ -356,6 +356,13 @@ if [ -d /Applications/Sublime\ Text\ 2.app ]; then
   alias e='open -a "Sublime Text 2"'
 fi
 
+# alias to Sublime Text 2 extensions directory
+if [ -d ~/Library/Application\ Support/Sublime\ Text\ 2/Packages ]; then
+  alias st2packages='cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages'
+fi
+
+
+
 
 # alias to Crash logs / Diagnostic Reports of OS X
 if [ -d ~/Library/Logs/DiagnosticReports ]; then
