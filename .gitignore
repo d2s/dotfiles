@@ -3,3 +3,5 @@ etc/vim/.netrwhist
 etc/vim/.VimballRecord
 etc/gitconfig
 bin/get_flash_videos
+*.sublime-project
+*.sublime-workspace

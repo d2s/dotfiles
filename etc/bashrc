@@ -341,7 +341,9 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' 
 
 alias untar="tar xvzf"
 
-alias cp_folder="cp -Rpv"	# Copies folder and all sub files and folders, preserving security and dates
+# Copies folder and all sub files and folders, preserving security and dates
+alias cp_folder="cp -Rpv"
+
 
 alias mirror_website="wget -m -x -p --convert-links --no-host-directories --no-cache -erobots=off"
 
